@@ -112,3 +112,21 @@ function multiMap(arrVals, arrCallbacks) {
 // console.log(multiMap(['catfood', 'glue', 'beer'], [function(str) { return str.toUpperCase(); }, function(str) { return str[0].toUpperCase() + str.slice(1).toLowerCase(); }, function(str) { return str + str; }]));
 // should log: { catfood: ['CATFOOD', 'Catfood', 'catfoodcatfood'], glue: ['GLUE', 'Glue', 'glueglue'], beer: ['BEER', 'Beer', 'beerbeer'] }
 
+
+//Extension 7
+function objectFilter(obj, callback) {
+  const newObj = {};
+  for (let key in obj) {
+    if (callback(key) === obj[key]) {
+      newObj[key] = callback(key);
+    }
+  }
+  return newObj;
+}
+
+// const cities = {
+//   London: 'LONDON',
+//   LA: 'Los Angeles',
+//   Paris: 'PARIS',
+// };
+// console.log(objectFilter(cities, city => city.toUpperCase())) // Should log { London: 'LONDON', Paris: 'PARIS'}

@@ -112,3 +112,19 @@ const afterCalled = after(3, called);
 function delay(func, wait, ...args) {
   setTimeout(() => func(...args), wait);
 }
+
+// Challenge 8
+function rollCall(names) {
+  return () => {
+    if (!names.length) return console.log('Everyone accounted for');
+    console.log(names.shift());
+  }
+}
+
+// UNCOMMENT THESE TO TEST YOUR WORK!
+// const rollCaller = rollCall(['Victoria', 'Juan', 'Ruth'])
+// rollCaller() // -> Should log 'Victoria'
+// rollCaller() // -> Should log 'Juan'
+// rollCaller() // -> Should log 'Ruth'
+// rollCaller() // -> Should log 'Everyone accounted for'
+

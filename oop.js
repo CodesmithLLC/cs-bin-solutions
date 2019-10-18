@@ -192,3 +192,29 @@ const adminFromFactory = adminFactory("Eva", 5);
 // /********* Uncomment these lines to test your work! *********/
 adminFromFactory.sayType() // -> Logs "I am a Admin"
 adminFromFactory.sharePublicMessage() // -> Logs "Welcome users!"
+
+
+/****************************************************************
+EXTENSION: MIXINS
+****************************************************************/
+
+class Dog {
+  constructor() {
+    this.legs = 4;
+  }
+  speak() {
+    console.log('Woof!');
+  }
+}
+
+const robotSkillsMixin = {
+  skin: 'metal',
+  speak: function () { console.log(`I have ${this.legs} legs and am made of ${this.skin}`) },
+}
+
+let robotFido = new Dog();
+
+robotFido = Object.assign(robotFido, robotSkillsMixin);
+
+// /********* Uncomment these lines to test your work! *********/
+robotFido.speak() // -> Logs "I am made of metal"
