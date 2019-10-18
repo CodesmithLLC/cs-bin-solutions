@@ -61,14 +61,3 @@ function everyXsecsForYsecs(func, interval, duration) {
 //   console.log('This is the end!');
 // }
 // everyXsecsForYsecs(theEnd, 2, 20); // should invoke theEnd function every 2 seconds, for 20 seconds): This is the end!
-
-
-let x = 0;
-const int1 = setInterval(() => x += 1, 500);
-const int2 = setInterval(() => {
-  if (x > 5) {
-    console.log('done')
-    clearInterval(int1);
-    clearInterval(int2);
-  }
-}, 200);
