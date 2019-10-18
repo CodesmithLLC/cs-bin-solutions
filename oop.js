@@ -181,7 +181,6 @@ const adminFunctionStore = Object.create(userFunctionStore);
 function adminFactory(name, score) {
   const admin = new userFactory(name, score);
   admin.type = 'Admin';
-  admin.prototype = adminFunctionStore;
   return admin;
 }
 
@@ -191,5 +190,5 @@ userFunctionStore.sharePublicMessage = () => console.log('Welcome users!');
 const adminFromFactory = adminFactory("Eva", 5);
 
 // /********* Uncomment these lines to test your work! *********/
-// adminFromFactory.sayType() // -> Logs "I am a Admin"
-// adminFromFactory.sharePublicMessage() // -> Logs "Welcome users!"
+adminFromFactory.sayType() // -> Logs "I am a Admin"
+adminFromFactory.sharePublicMessage() // -> Logs "Welcome users!"
