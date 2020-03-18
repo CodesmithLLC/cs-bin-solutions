@@ -88,3 +88,68 @@ function delayCounter(target, wait) {
 // After 2 seconds, log 2
 // After 3 seconds, log 3
 
+// Challenge 8: Promise-function
+
+const promised = (val) => {
+    return new Promise((resolve) => {
+        return setTimeout(() => resolve(val), 2000)
+    })
+};
+
+// UNCOMMENT THESE TO TEST YOUR WORK!
+// const createPromise = promised('wait for it...');
+// createPromise.then((val) => console.log(val)); 
+// will log "wait for it..." to the console after 2 seconds
+
+// Challenge 9: Second-clock
+
+class SecondClock {
+  constructor(cb) {
+    this.cb = cb;
+    this.time = 1;
+    this.intervalID = null;
+  }
+  
+  start() {
+    this.intervalID = setInterval(() => {
+      this.cb(this.time);
+      this.time++;
+      if (this.time === 61)
+        this.time = 1;
+    }, 1000);
+  }
+  
+  reset() {
+    clearInterval(this.intervalID);
+  }
+}
+
+// UNCOMMENT THESE TO TEST YOUR WORK!
+// const clock = new SecondClock((val) => { console.log(val) });
+// console.log("Started Clock.");
+// clock.start();
+// setTimeout(() => {
+//     clock.reset();
+//     console.log("Stopped Clock after 6 seconds.");
+// }, 6000);
+
+// Challenge 10: Debounce
+
+const debounce = (callback, interval) => {
+  let timerStart = new Date();
+  return () => {
+    const invocationTime = new Date();
+    if (invocationTime - timerStart > interval) {
+      timerStart = new Date();
+      return callback();
+    }
+  };
+};
+
+// UNCOMMENT THESE TO TEST YOUR WORK!
+// function giveHi() { return 'hi'; }
+// const giveHiSometimes = debounce(giveHi, 3000);
+// console.log(giveHiSometimes()); // -> 'hi'
+// setTimeout(function() { console.log(giveHiSometimes()); }, 2000); // -> undefined
+// setTimeout(function() { console.log(giveHiSometimes()); }, 4000); // -> undefined
+// setTimeout(function() { console.log(giveHiSometimes()); }, 8000); // -> 'hi'
