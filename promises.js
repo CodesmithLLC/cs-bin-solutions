@@ -1,6 +1,6 @@
 // Challenge 1
 function sayHello() {
-	setTimeout(() => console.log('Hello!'), 1000);
+  setTimeout(() => console.log('Hello!'), 1000);
 }
 
 // Uncomment the line below when ready
@@ -41,9 +41,9 @@ promise = new Promise(function (resolve, reject) {
 
 // Challenge 5
 function delay(){
-	const promise = new Promise(function(resolve, reject) {
-    setTimeout(() => resolve(), 1000)
-  });
+  const promise = new Promise(function(resolve, reject) {
+  setTimeout(() => resolve(), 1000)
+});
   return promise;
 }
 
