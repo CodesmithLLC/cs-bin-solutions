@@ -130,7 +130,7 @@ function rollCall(names) {
 
 // CHALLENGE 9
 function cycleIterator(array) {
-  let count = 0;
+  let count = -1;
   const innerFunc = () => {
     if (count < array.length) {
       count++;
