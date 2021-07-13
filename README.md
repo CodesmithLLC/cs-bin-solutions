@@ -6,3 +6,4 @@
 3. oop.js (http://csbin.io/oop)
 4. async.js (http://csbin.io/async)
 5. functional.js (http://csbin.io/functional)
+6. recursion.js (http://csbin.io/recursion)
