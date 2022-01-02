@@ -183,13 +183,13 @@ const pipe = (arrOfFuncs, value) => {
 
 // Challenge 15
 const highestFunc = (objOfFuncs, subject) => {
-  let highestNum = -Infinity;
-  let highFunc;
-  const objOfFuncsKeys = Object.keys(objOfFuncs);
-  for (let func of objOfFuncsKeys) {
-    if (objOfFuncs[func](subject) > highestNum) {
-      highestNum = objOfFuncs[func](subject);
-      highFunc = func;
+  let highFunc = undefined;
+  let highestNum = undefined;
+  for (const [funcName, func] of Object.entries(objOfFuncs)) {    
+    const value = func(subject);
+    if (!highestNum || value > highestNum) { 
+      highFunc = funcName;
+      highestNum = func(subject);
     }
   }
   return highFunc;
