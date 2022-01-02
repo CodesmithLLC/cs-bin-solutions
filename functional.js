@@ -104,14 +104,11 @@ const objOfMatches = (array1, array2, callback) => {
 
 // Challenge 10
 const multiMap = (arrVals, arrCallbacks) => {
-  const multiMapObj = {};
-  for (let i = 0; i < arrVals.length; i++) {
-    multiMapObj[arrVals[i]] = [];
-    for (let j = 0; j < arrCallbacks.length; j++) {
-      multiMapObj[arrVals[i]].push(arrCallbacks[j](arrVals[i]));
-    }
-  }
-  return multiMapObj;
+  return arrVals.reduce((acc, element) => {
+     const results = arrCallbacks.map(callback => callback(element))
+     acc[element] = results    
+     return acc
+  }, {})
 };
 
 // console.log(multiMap(['catfood', 'glue', 'beer'], [(str) => str.toUpperCase(), (str) => str[0].toUpperCase() + str.slice(1).toLowerCase(), (str) => str + str]));
@@ -134,12 +131,13 @@ const commutative = (func1, func2, value) => {
 
 // Challenge 12
 const objFilter = (obj, callback) => {
-  const filteredObj = {};
-  const objKeys = Object.keys(obj);
-  for (let key of objKeys) {
-    if (callback(key) === obj[key]) filteredObj[key] = obj[key];
+  const results = {}
+  for (const [key, val] of Object.entries(obj)) {
+    if (callback(key) === val) {
+      results[key] = val
+    }
   }
-  return filteredObj;
+  return results
 };
 
 // /*** Uncomment these to check your work! ***/
@@ -153,11 +151,8 @@ const objFilter = (obj, callback) => {
 
 // Challenge 13
 const rating = (arrOfFuncs, value) => {
-  let trueCount = 0;
-  for (let func of arrOfFuncs) {
-    if (func(value)) trueCount++;
-  }
-  return 100 * trueCount / arrOfFuncs.length;
+  const numOfTrueResults = arrOfFuncs.filter(fn => fn(value)) 
+  return (numOfTrueResults.length / arrOfFuncs.length) * 100
 };
 
 // /*** Uncomment these to check your work! ***/
