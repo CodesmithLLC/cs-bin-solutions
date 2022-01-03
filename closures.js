@@ -128,3 +128,37 @@ function rollCall(names) {
 // rollCaller() // -> Should log 'Ruth'
 // rollCaller() // -> Should log 'Everyone accounted for'
 
+function saveOutput(func, magicWord) {
+  
+  let result = 0;
+  let output = {}
+
+  function wordChecker(input){
+		
+    output = {...output, [input]: result}
+    
+    if (input === magicWord){
+      
+      return output
+      
+    }
+    
+    else {
+      
+      result = func(input)
+      
+      return result;
+    }
+    
+  }       
+  
+  return wordChecker
+  }
+
+// /*** Uncomment these to check your work! ***/
+// const multiplyBy2 = function(num) { return num * 2; };
+// const multBy2AndLog = saveOutput(multiplyBy2, 'boo');
+// console.log(multBy2AndLog(2)); // => should log 4
+// console.log(multBy2AndLog(9)); // => should log 18
+// console.log(multBy2AndLog('boo')); // => should log { 2: 4, 9: 18 }
+
