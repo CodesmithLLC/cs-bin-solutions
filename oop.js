@@ -180,12 +180,13 @@ const adminFunctionStore = Object.create(userFunctionStore);
 
 function adminFactory(name, score) {
   const admin = new userFactory(name, score);
+  Object.setPrototypeOf(admin, adminFunctionStore)
   admin.type = 'Admin';
   return admin;
 }
 
 /* Put code here for a method called sharePublicMessage*/
-userFunctionStore.sharePublicMessage = () => console.log('Welcome users!');
+adminFunctionStore.sharePublicMessage = () => console.log('Welcome users!');
 
 const adminFromFactory = adminFactory("Eva", 5);
 
@@ -217,4 +218,4 @@ let robotFido = new Dog();
 robotFido = Object.assign(robotFido, robotSkillsMixin);
 
 // /********* Uncomment these lines to test your work! *********/
-robotFido.speak() // -> Logs "I am made of metal"
+robotFido.speak() // -> Logs "I have 4 legs and am made of metal"
