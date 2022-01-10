@@ -217,4 +217,4 @@ let robotFido = new Dog();
 robotFido = Object.assign(robotFido, robotSkillsMixin);
 
 // /********* Uncomment these lines to test your work! *********/
-robotFido.speak() // -> Logs "I am made of metal"
+robotFido.speak() // -> Logs "I have 4 legs and am made of metal"
