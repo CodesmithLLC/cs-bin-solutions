@@ -180,12 +180,13 @@ const adminFunctionStore = Object.create(userFunctionStore);
 
 function adminFactory(name, score) {
   const admin = new userFactory(name, score);
+  Object.setPrototypeOf(admin, adminFunctionStore)
   admin.type = 'Admin';
   return admin;
 }
 
 /* Put code here for a method called sharePublicMessage*/
-userFunctionStore.sharePublicMessage = () => console.log('Welcome users!');
+adminFunctionStore.sharePublicMessage = () => console.log('Welcome users!');
 
 const adminFromFactory = adminFactory("Eva", 5);
 
