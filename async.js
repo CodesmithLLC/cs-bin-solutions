@@ -82,3 +82,18 @@ function delayCounter(target, wait) {
 // After 2 seconds, log 2
 // After 3 seconds, log 3
 
+/* CHALLENGE 8 */
+
+function promised (val) {
+      const myPromise = new Promise((resolve, reject) => {
+            setTimeout(() => {
+              resolve(val);
+            }, 2000);
+      	});
+    return myPromise
+}
+
+// UNCOMMENT THESE TO TEST YOUR WORK!
+// const createPromise = promised('wait for it...');
+// createPromise.then((val) => console.log(val)); 
+// will log "wait for it..." to the console after 2 seconds
