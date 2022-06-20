@@ -66,21 +66,15 @@ function everyXsecsForYsecs(func, interval, duration) {
 /* CHALLENGE 7 */
 
 function delayCounter(target, wait) {
-  let intervalId;
-  let counter = 0;
-  return function inner() {
-    if (counter === 0) {
-      counter++;
-      intervalId = setInterval(() => console.log(inner()), wait);
-    } else if (counter === target) {
-      clearInterval(intervalId);
-      return counter;
-    } else {
-      return counter++;
-    }
+	let count = 0;
+  return ()=>{
+    const interval = setInterval(()=>{
+    	count++;
+      console.log(count)
+    },wait)
+    setTimeout(()=>clearInterval(interval),target*1000)
   }
 }
-
 // UNCOMMENT THESE TO TEST YOUR WORK!
 // const countLogger = delayCounter(3, 1000)
 // countLogger();
