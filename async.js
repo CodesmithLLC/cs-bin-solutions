@@ -66,21 +66,15 @@ function everyXsecsForYsecs(func, interval, duration) {
 /* CHALLENGE 7 */
 
 function delayCounter(target, wait) {
-  let intervalId;
-  let counter = 0;
-  return function inner() {
-    if (counter === 0) {
-      counter++;
-      intervalId = setInterval(() => console.log(inner()), wait);
-    } else if (counter === target) {
-      clearInterval(intervalId);
-      return counter;
-    } else {
-      return counter++;
-    }
+	let count = 0;
+  return ()=>{
+    const interval = setInterval(()=>{
+    	count++;
+      console.log(count)
+    },wait)
+    setTimeout(()=>clearInterval(interval),target*1000)
   }
 }
-
 // UNCOMMENT THESE TO TEST YOUR WORK!
 // const countLogger = delayCounter(3, 1000)
 // countLogger();
@@ -88,3 +82,18 @@ function delayCounter(target, wait) {
 // After 2 seconds, log 2
 // After 3 seconds, log 3
 
+/* CHALLENGE 8 */
+
+function promised (val) {
+      const myPromise = new Promise((resolve, reject) => {
+            setTimeout(() => {
+              resolve(val);
+            }, 2000);
+      	});
+    return myPromise
+}
+
+// UNCOMMENT THESE TO TEST YOUR WORK!
+// const createPromise = promised('wait for it...');
+// createPromise.then((val) => console.log(val)); 
+// will log "wait for it..." to the console after 2 seconds
